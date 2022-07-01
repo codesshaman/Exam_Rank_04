@@ -29,6 +29,7 @@ int init_list(t_list *list, char **av, int i) {
 	len = end - i;
 	if (len > 0) {
 		list->av = &av[i];
+		list->prev_pipe = list->pipe_fd[0];
 		list->prev_type = list->type;
 		if (!av[end])
 			list->type = 0;
@@ -37,7 +38,6 @@ int init_list(t_list *list, char **av, int i) {
 		else
 			list->type = 2;
 		av[end] = NULL;
-		list->prev_pipe = list->pipe_fd[0];
 	}
 	return end;
 }
