@@ -12,12 +12,12 @@ int	ft_putstr_fd2(char *str, char *arg){
 	return 1;
 }
 
-int ft_execute(char *argv[], int i, int tmp_fd, char *env[]){
-	argv[i] = NULL;                 //overwrite ; or | or NULL whith NULL to use the array as input for execve.
-	dup2(tmp_fd, STDIN_FILENO);     //we are here in the child so it has no impact in the parent process.
-	close(tmp_fd);
-	execve(argv[0], argv, env);
-	return(ft_putstr_fd2("error: cannot execute ", argv[0]));
+int ft_execute(char *av[], int i, int fd, char *env[]){
+    av[i] = NULL;
+    dup2(fd, STDIN_FILENO);
+    close(fd);
+    execve(av[0], av, env);
+    return(ft_putstr_fd2("error: cannot execute ", av[0]));
 }
 
 int	main(int argc, char *argv[], char *env[]){
