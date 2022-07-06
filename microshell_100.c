@@ -5,14 +5,14 @@
 int	ft_putstr(char *str, char *arg){
 	while(*str)
 		write(2, str++, 1);
-	if(arg)
+	if(*arg)
 		while(*arg)
 			write(2, arg++, 1);
 	write(2, "\n", 1);
 	return 1;
 }
 
-int error(char *av[], int i, int fd, char *env[]){
+int error(char **av, int i, int fd, char **env){
     av[i] = NULL;
     dup2(fd, STDIN_FILENO);
     close(fd);
@@ -20,7 +20,7 @@ int error(char *av[], int i, int fd, char *env[]){
     return(ft_putstr("error: cannot execute ", av[0]));
 }
 
-int	main(int argc, char *argv[], char *env[]){
+int	main(int argc, char **argv, char **env){
 	int	i;
 	int pid;
 	int fd[2];
