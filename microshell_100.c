@@ -19,16 +19,10 @@ int ft_execute(char *av[], char *env[], int i, int tmp_fd){
 	execve(av[0], av, env);
 	return (ft_putstr("error: cannot execute ", av[0]));
 }
-
 int	main(int ac, char *av[], char *env[]){
-	int	i;
-	int pid;
-	int fd[2];
-	int tmp_fd;
+	int	i = 0, pid = 0, fd[2], tmp_fd;
 	(void)ac;
 
-	pid = 0;
-	i = 0;
 	tmp_fd = dup(STDIN_FILENO);
 	while (av[i] && av[i + 1]){
 		av = &av[i + 1];
