@@ -20,12 +20,12 @@ int ft_execute(char *av[], char *env[], int i, int tmp_fd){
 	return (ft_putstr("error: cannot execute ", av[0]));
 }
 
-int	main(int argc, char *av[], char *env[]){
+int	main(int ac, char *av[], char *env[]){
 	int	i;
 	int pid;
 	int fd[2];
 	int tmp_fd;
-	(void)argc;
+	(void)ac;
 
 	pid = 0;
 	i = 0;
