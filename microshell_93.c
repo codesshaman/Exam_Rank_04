@@ -86,8 +86,7 @@ int main(int ac, char **av, char **env) {
 				write(2, list.av[1], ft_strlen(list.av[1]));
 				write(2, "\n", 1);
 			}
-		}
-		else if (i > start)
+		} else if (i > start)
 			exe_shell(&list, env);
 	}
 }
